@@ -78,7 +78,7 @@
 					<td><?php echo $ls_type ?></td>                 	
                   	<td><?php echo $weight; ?></td>           
                     <td><?php echo $sale_status; ?></td> 
-                    <td><?php echo "Ghc". $sale_amount; ?></td>
+                    <td><?php echo "GH₵". number_format($sale_amount, 2); ?></td>
                   	<td><?php echo $arr; ?></td>
                   	
                   </tr>
