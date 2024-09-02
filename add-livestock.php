@@ -26,6 +26,7 @@
       	if(isset($_FILES['livestockphoto']['tmp_name'])){
 
 	      	$n_livestockno = $_POST['livestockno'];
+			$sale_amount = $_POST['sale_amount'];
 	      	$n_weight = $_POST['weight'];
 	      	$n_arrived = $_POST['arrived'];
 	      	$n_breed = $_POST['breed'];
@@ -61,7 +62,7 @@
 
     
 
-      	$insert = $db->query("INSERT INTO livestock(livestockno,weight,arrived,breed_id,remark,health_status,type, img,gender) VALUES('$n_livestockno','$n_weight','$n_arrived','$n_breed','$n_remark','$n_status','$n_type','$path1','$n_gender') ");
+      	$insert = $db->query("INSERT INTO livestock(livestockno, sale_amount, weight, arrived,breed_id,remark,health_status,type, img,gender) VALUES('$n_livestockno', '$sale_amount', '$n_weight', '$n_arrived', '$n_breed', '$n_remark', '$n_status','$n_type','$path1','$n_gender') ");
 
       	if($insert){?>
       	<div class="alert alert-success alert-dismissable">
@@ -147,6 +148,11 @@
 	 		<div class="form-group">
 	 			<label class="control-label">Description</label>
 	 			<textarea class="form-control" name="remark" required></textarea>
+	 		</div>
+
+			 <div class="form-group">
+	 			<label class="control-label">Livestock sale amount</label>
+	 			<input type="number" min="0" step="" name="sale_amount" class="form-control" required>
 	 		</div>
 
 	 		<div class="form-group">
