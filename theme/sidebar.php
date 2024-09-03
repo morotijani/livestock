@@ -21,6 +21,7 @@
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="dashboard.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Dashboard</a>
     <a href="manage-livestock.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Manage LiveStock</a>
+    <a href="reorder.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-money fa-fw"></i>  Re-order</a>
     <a href="sales.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Sales</a>
     <a href="manage-breed.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Manage Breeds</a>
     <a href="manage-quarantine.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Quarantine</a>

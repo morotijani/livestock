@@ -29,15 +29,15 @@
  				<th>Breed</th>
  				<th>Weight</th>
  				<th>Gender</th>
-         
  				<th>Arrived</th>
+         <th></th>
  				<th>Desc.</th>
         <th></th>
  			</tr>
  		</thead>
  		<tbody>
  			<?php
-       $all_pig = $db->query("SELECT * FROM livestock ORDER BY id DESC");
+       $all_pig = $db->query("SELECT * FROM livestock INNER JOIN quarantine WHERE quarantine.livestockno != livestock.livestockno ORDER BY livestock.id DESC");
        $fetch = $all_pig->fetchAll(PDO::FETCH_OBJ);
        foreach($fetch as $data){ 
           $get_breed = $db->query("SELECT * FROM breed WHERE id = '$data->breed_id'");
@@ -51,6 +51,8 @@
             </td>
             <td>
               <?php echo $data->livestockno; ?>
+              <br>
+              <?= (($data->reorder == 1) ? '<span class="badge badge-warning">Re-order</span>' : ''); ?>
             </td>
             <td><?php echo $data->type ?></td>
             <td><?php echo $breed->name ?></td>

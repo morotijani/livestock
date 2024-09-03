@@ -34,6 +34,7 @@
 	      	$n_status = $_POST['status'];
 			$n_type = $_POST['type'];
 	      	$n_gender = $_POST['gender'];
+			$reorder = ((isset($_POST['reorder'])) ? $_POST['reorder'] : 0);
 			
 
       	
@@ -58,11 +59,7 @@
 		}
       	
 
-   
-
-    
-
-      	$insert = $db->query("INSERT INTO livestock(livestockno, sale_amount, weight, arrived,breed_id,remark,health_status,type, img,gender) VALUES('$n_livestockno', '$sale_amount', '$n_weight', '$n_arrived', '$n_breed', '$n_remark', '$n_status','$n_type','$path1','$n_gender') ");
+      	$insert = $db->query("INSERT INTO livestock(livestockno, sale_amount, weight, arrived,breed_id,remark,health_status,type, img,gender, reorder) VALUES('$n_livestockno', '$sale_amount', '$n_weight', '$n_arrived', '$n_breed', '$n_remark', '$n_status','$n_type','$path1','$n_gender', '$reorder') ");
 
       	if($insert){?>
       	<div class="alert alert-success alert-dismissable">
@@ -159,6 +156,11 @@
 	 			<label class="control-label">Livestock photo</label>
 	 			<input type="file" name="livestockphoto" class="form-control" required>
 	 		</div>
+
+			 <div class="form-group">
+				<label for="">Re-order</label>&nbsp;
+				<input type="checkbox" name="reorder" value="1" class="">
+			 </div>
 
 	 		<button name="submit" type="submit" name="submit" class="btn btn-sn btn-default">Add Record</button>
  		</form>
