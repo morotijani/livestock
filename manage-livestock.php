@@ -50,11 +50,7 @@
               <img width="70" height="70" src="<?php echo $data->img; ?>" class="img img-responsive thumbnail">
             </td>
             <td>
-              <?php echo $data->livestockno ?>
-              <br>
-              <?php if ($data->sale_status == 'Sold') : ?>
-                <span class="badge">Sold</span>
-              <?php endif; ?>
+              <?php echo $data->livestockno; ?>
             </td>
             <td><?php echo $data->type ?></td>
             <td><?php echo $breed->name ?></td>
@@ -86,7 +82,8 @@
                 </div>
               </div>
             </div>
-            
+            <?php else: ?>
+              <button type="button" class="btn btn-warning">Sold</button>
             <?php endif; ?>
             </td>
             <td><?php echo wordwrap($data->remark,300,'<br>'); ?></td>
