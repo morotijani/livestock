@@ -49,15 +49,21 @@
             <td>
               <img width="70" height="70" src="<?php echo $data->img; ?>" class="img img-responsive thumbnail">
             </td>
-            <td><?php echo $data->livestockno ?></td>
+            <td>
+              <?php echo $data->livestockno ?>
+              <br>
+              <?php if ($data->sale_status == 'Sold') : ?>
+                <span class="badge">Sold</span>
+              <?php endif; ?>
+            </td>
             <td><?php echo $data->type ?></td>
             <td><?php echo $breed->name ?></td>
             <td><?php echo $data->weight ?></td>
             <td><?php echo $data->gender ?></td>
             <td><?php echo $data->arrived ?></td>
             <td>
-              
               <!-- Button trigger modal -->
+              <?php if ($data->sale_status != 'Sold') : ?>
               <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal<?php echo $data->id ?>">
               <?php echo 'GH₵' . number_format($data->sale_amount, 2); ?>
               </button>
@@ -80,6 +86,8 @@
                 </div>
               </div>
             </div>
+            
+            <?php endif; ?>
             </td>
             <td><?php echo wordwrap($data->remark,300,'<br>'); ?></td>
             <td>
