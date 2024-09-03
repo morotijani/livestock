@@ -31,7 +31,7 @@
  		</thead>
  		<tbody>
  			<?php
-               $qpi = $db->query("SELECT * FROM livestock ORDER BY id");
+               $qpi = $db->query("SELECT * FROM livestock WHERE sale_status = 'Sold'");
                $result = $qpi->fetchAll(PDO::FETCH_OBJ);
                $c = $qpi->rowCount();
 
@@ -40,15 +40,6 @@
                $sales_rows=$db->query($sales)->fetchAll(PDO::FETCH_COLUMN);
                //calculating numbers/int values rows in sale amount column
                $total_sales=array_sum($sales_rows);
-
-                //selecting sales amount column only for unsold
-                $sales2 = "SELECT sale_amount FROM livestock where sale_status='Unsold' ";
-                $sales_rows2=$db->query($sales2)->fetchAll(PDO::FETCH_COLUMN);
-                //calculating numbers/int values rows in sale amount column for unsold
-                $total_sales2=array_sum($sales_rows2);
-
-                //overall sales
-                $overall_sales= $total_sales + $total_sales2;
 
                foreach ($result as $j) {
                	 $livestockname = $j->livestockno;
@@ -101,10 +92,7 @@
  			</tr>
 
             <tr>
-                <td colspan="" style="background-color: grey; height:50px;">Total Amount of Livestock Sold: Ghc<?= $total_sales;?> </td>
-			</tr>
-			<tr>
-                <td colspan="" style="background-color: azure; height:50px;"><b>OVER ALL SALES:</b> Ghc<?= $total_sales.".00";?> </td>                   
+                <td colspan="" style="background-color: grey; height: 50px; padding: 10px; border-radius: 5px;">Total Sales: GH₵<?= $total_sales;?> </td>
 			</tr>
     </table>
 
