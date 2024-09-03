@@ -83,7 +83,7 @@
               </div>
             </div>
             <?php else: ?>
-              <button type="button" class="btn btn-warning">Sold</button>
+              <button type="button" class="btn btn-warning" disabled>Sold</button>
             <?php endif; ?>
             </td>
             <td><?php echo wordwrap($data->remark,300,'<br>'); ?></td>
