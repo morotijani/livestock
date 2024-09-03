@@ -55,6 +55,32 @@
             <td><?php echo $data->weight ?></td>
             <td><?php echo $data->gender ?></td>
             <td><?php echo $data->arrived ?></td>
+            <td>
+              
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal<?php echo $data->id ?>">
+              <?php echo 'GH₵' . number_format($data->sale_amount, 2); ?>
+              </button>
+              <div class="modal fade" id="myModal<?php echo $data->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<?php echo $data->id ?>">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel<?php echo $data->id ?>">Modal title</h4>
+                  </div>
+                  <div class="modal-body">
+                  <p class="lead"> You are to purchase a livestock with an ID: <?= $data->livestockno; ?></p>
+                  <br>
+                  Sale amount is: <?php echo 'GH₵' . number_format($data->sale_amount ,2); ?>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a href="purchase-livestock.php?id=<?php echo $data->id ?>" class="btn btn-primary">Purchase</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </td>
             <td><?php echo wordwrap($data->remark,300,'<br>'); ?></td>
             <td>
                <div class="dropdown">
@@ -67,7 +93,7 @@
                   </ul>
                 </div> 
             </td>
-          </tr>    
+          </tr> 
       <?php 
        }
       }
