@@ -58,34 +58,8 @@ if ($_POST) {
 ?>
 
  <div class="w3-row">
-    <form method="POST" action="reorder.php" id="buyForm">
         <h2>Manage Re-Order</h2>
         <a href="reorder.php" style="margin-left: 10px" class="btn btn-sm btn-danger pull-right">Cancel re-order</a><br><br>
-
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Complete re-order</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p class="lead"> You are to a bulk purchase of livesctock</p>
-                        <!-- <br>
-                        Actual total purchase amount is: <span id=""></span>
-                        <br> -->
-                        <div class="form-group">
-                            <label for="">New amount to be sold:</label>
-                            <input type="text" class="form-control" name="new_price">
-                        </div>
-                        </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button id="submit-reorder" onClick="submit_reorder()" class="btn btn-primary">Purchase</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     <div class="table-responsive">
  	    <table class="table table-hover table-striped" id="table">
@@ -115,7 +89,6 @@ if ($_POST) {
             ?>
           <tr>
                 <td>
-                    <input type="checkbox" id="buy_<?php echo $data->id ?>" name="buy[]" value="<?php echo $data->id ?>">
                     <?php echo $data->id ?></td>
                 <td>
                 <img width="70" height="70" src="<?php echo $data->img; ?>" class="img img-responsive thumbnail">
@@ -157,7 +130,6 @@ if ($_POST) {
  		</tbody>
  	</table>
  </div>
-    </form>
  </div>
 </div>
 
@@ -166,9 +138,3 @@ if ($_POST) {
 
 
 <?php include 'theme/foot.php'; ?>
-<script>
-    function submit_reorder() {
-        alert('in');
-        $('#buyForm').submit();
-    }
-</script>
