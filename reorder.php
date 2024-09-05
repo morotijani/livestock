@@ -60,8 +60,7 @@ if ($_POST) {
  <div class="w3-row">
     <form method="POST" action="reorder.php" id="buyForm">
         <h2>Manage Re-Order</h2>
-        <a href="reorder.php" style="margin-left: 10px" class="btn btn-sm btn-danger pull-right">Cancel re-order</a>
-        <a href="javascript:;" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary pull-right">Complete re-order</a><br><br>
+        <a href="reorder.php" style="margin-left: 10px" class="btn btn-sm btn-danger pull-right">Cancel re-order</a><br><br>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
