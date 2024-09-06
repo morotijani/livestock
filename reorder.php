@@ -57,12 +57,12 @@ if ($_POST) {
 
 ?>
 
- <div class="w3-row">
-        <h2>Manage Re-Order</h2>
-        <a href="reorder.php" style="margin-left: 10px" class="btn btn-sm btn-danger pull-right">Cancel re-order</a><br><br>
+    <div class="w3-row">
+        <h2>Re-Order</h2>
+        <a href="manage-livestock.php" style="margin-left: 10px" class="btn btn-sm btn-danger pull-right">Go back</a><br><br>
 
-    <div class="table-responsive">
- 	    <table class="table table-hover table-striped" id="table">
+        <div class="table-responsive">
+ 	    <table class="table table-hover bg-danger" id="table">
  		    <thead>
  			    <tr>
  				    <th>S/N</th>
@@ -72,15 +72,14 @@ if ($_POST) {
                     <th>Breed</th>
                     <th>Weight</th>
                     <th>Gender</th>
-                    <th>Arrived</th>
-                    <th></th>
- 				    <th>Desc.</th>
+                    <th>Qty</th>
+                    <th>Threshold</th>
                     <th></th>
  			    </tr>
  		    </thead>
  		    <tbody>
             <?php
-                $all_pig = $db->query("SELECT * FROM livestock WHERE reorder = 1 AND sale_status = 'Unsold' ORDER BY id DESC");
+                $all_pig = $db->query("SELECT *, livestock.id AS lid FROM livestock INNER JOIN quarantine WHERE quantity <= threshold AND quarantine.livestockno != livestock.livestockno ORDER BY livestock.id DESC");
                 $fetch = $all_pig->fetchAll(PDO::FETCH_OBJ);
                 foreach ($fetch as $data) { 
                     $get_breed = $db->query("SELECT * FROM breed WHERE id = '$data->breed_id'");
@@ -100,17 +99,8 @@ if ($_POST) {
                 <td><?= $breed->name ?></td>
                 <td><?= $data->weight ?></td>
                 <td><?= $data->gender ?></td>
-                <td><?= $data->arrived ?></td>
-                <td>
-                    <!-- Button trigger modal -->
-                    <?php if ($data->sale_status != 'Sold') : ?>
-                        <?= 'GH₵' . number_format($data->sale_amount, 2); ?>
-                    
-                    <?php else: ?>
-                    <button type="button" class="btn btn-warning" disabled>Sold</button>
-                    <?php endif; ?>
-                </td>
-            <td><?= wordwrap($data->remark, 300, '<br>'); ?></td>
+                <td><?= $data->quantity ?></td>
+                <td><?= $data->threshold ?></td>
             <td>
                <div class="dropdown">
                   <button class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-cog"></i> Option

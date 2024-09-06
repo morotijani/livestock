@@ -59,8 +59,8 @@
                                         <td><?php echo $data->gender ?></td>
                                         <td><?php echo $data->arrived ?></td>
                                         <td>
-                                            <?php if ($data->sale_status != 'Sold') : ?>
-                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?php echo $data->id ?>">
+                                            <?php if ($data->quantity > 0) : ?>
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?php echo $data->lid ?>">
                                                     <?php echo 'GH₵' . number_format($data->sale_amount, 2); ?>
                                                 </button>
                                                 <div class="modal fade" id="myModal<?php echo $data->lid ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<?php echo $data->lid ?>">

@@ -4,18 +4,16 @@
 <?php include 'session.php'; ?>
 
 <?php 
- if(!$_GET['id'] OR empty($_GET['id']) OR $_GET['id'] == '')
- {
- 	header('location: manage-livestock.php');
-
- }else{
+    if (!$_GET['id'] OR empty($_GET['id']) OR $_GET['id'] == '') {
+ 	  header('location: manage-livestock.php');
+    } else {
  	
- 	$id = (int)$_GET['id'];
- 	$updateQuery = $db->query("UPDATE livestock SET sale_status = 'Sold' WHERE id = '$id' ");
-
- }
+     	$id = (int)$_GET['id'];
+     	$updateQuery = $db->query("UPDATE livestock SET quantity = quantity - 1 WHERE id = '$id' ");
+    }
 
 ?>
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
