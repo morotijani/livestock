@@ -73,7 +73,7 @@
 
       	$n_id = $_GET['id'];
 
-      	$update_query = $db->query("UPDATE livestock SET livestockno = '$livestockno ',weight = '$n_weight',arrived = '$n_arrived', breed_id = '$n_breed', quantity = '$quantity', quantity = '$quantity', remark = '$n_remark',health_status = '$n_status', type='$n_type', sale_status='$n_sale_status',sale_amount='$n_sale_amount' WHERE id = '$n_id' ");
+      	$update_query = $db->query("UPDATE livestock SET livestockno = '$livestockno ',weight = '$n_weight',arrived = '$n_arrived', breed_id = '$n_breed', quantity = '$quantity', threshold = '$threshold', remark = '$n_remark',health_status = '$n_status', type='$n_type', sale_status='$n_sale_status',sale_amount='$n_sale_amount' WHERE id = '$n_id' ");
 
       	if($update_query){?>
       	<div class="alert alert-success alert-dismissable">
