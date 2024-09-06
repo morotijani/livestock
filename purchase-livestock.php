@@ -9,7 +9,17 @@
     } else {
  	
      	$id = (int)$_GET['id'];
-     	$updateQuery = $db->query("UPDATE livestock SET quantity = quantity - 1 WHERE id = '$id' ");
+        $find = $db->query("SELECT * FROM livestock WHERE id = '$id' ");
+        if ($find) {
+            $finder = $find->fetchAll(PDO::FETCH_OBJ);
+            foreach ($finder as $find) {
+
+             	$updateQuery = $db->query("UPDATE livestock SET quantity = quantity - 1 WHERE id = '$id' ");
+
+                $sales_id = time();
+                $query = $db->query("INSERT INTO sales (sales_id, livestock_id, amount) VALUES ($sales_id, '$id', '$find->sale_amount')");
+            }
+        }
     }
 
 ?>

@@ -31,20 +31,16 @@
  		</thead>
  		<tbody>
  			<?php
-               $qpi = $db->query("SELECT * FROM livestock WHERE sale_status = 'Sold'");
+               $qpi = $db->query("SELECT * FROM sales INNER JOIN livestock WHERE livestock.id = sales.livestock_id");
                $result = $qpi->fetchAll(PDO::FETCH_OBJ);
                $c = $qpi->rowCount();
 
                //selecting sales amount column only
-               $sales = "SELECT sale_amount FROM livestock where sale_status='Sold' ";
+               $sales = "SELECT amount FROM sales";
                $sales_rows=$db->query($sales)->fetchAll(PDO::FETCH_COLUMN);
                //calculating numbers/int values rows in sale amount column
                $total_sales= number_format(array_sum($sales_rows), 2);
 
-			   $reorder_sales = "SELECT new_amount FROM reorder";
-               $reorder_sales_rows=$db->query($reorder_sales)->fetchAll(PDO::FETCH_COLUMN);
-               //calculating numbers/int values rows in sale amount column
-               $reorder_total_sales = number_format(array_sum($reorder_sales_rows), 2);
 
                foreach ($result as $j) {
                	 $livestockname = $j->livestockno;
@@ -53,7 +49,6 @@
                	 $weight = $j->weight;
                	 $gender = $j->gender;
                	 $remark = $j->remark;
-                 $sale_status= $j->sale_status;
                  $sale_amount= $j->sale_amount;
                	 $arr = $j->arrived;
 
@@ -73,11 +68,8 @@
                   	<td><?php echo $livestockname; ?></td>
 					<td><?php echo $ls_type ?></td>                 	
                   	<td><?php echo $weight; ?></td>           
-                    <td><?php echo $sale_status; ?></td> 
                     <td>
 						<?php echo "GH₵". number_format($sale_amount, 2); ?>
-						<br>
-						<?= (($j->reorder == 1) ? '<span class="badge badge-warning">Re-order</span>' : ''); ?>
 					</td>
                   	<td><?php echo $arr; ?></td>
                   	
@@ -99,9 +91,6 @@
                 <th></th>
  				<th></th>		
  			</tr>
-            <tr>
-				<td style="background-color: orange; height: 50px; padding: 10px; border-radius: 5px;">Re-order Total Sales: GH₵<?= $reorder_total_sales;?> </td>
-			</tr>
 			<tr>
 				<td style="background-color: grey; height: 50px; padding: 10px; border-radius: 5px;">Total Sales: GH₵<?= $total_sales;?> </td>
 			</tr>
