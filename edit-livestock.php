@@ -124,14 +124,6 @@
 	 			
 				 <select name="sale_status" class="form-control">		
 	 				<option value="<?php echo $id; ?>" selected><?php echo $sale_status; ?></option>
-	 				<?php
-	                   $getStatus = $db->query("SELECT * FROM sales_raw_data WHERE sales_status !='$sale_status' ");
-	                   $result = $getStatus->fetchAll(PDO::FETCH_OBJ);
-	                   foreach( $result as $sts){ ?>
-	                     <option value="<?php echo $sts->id; ?>"><?php echo $sts->sales_status; ?></option>   
-	                   <?php
-	                   }
-	 				?>
 	 			</select>
 	 		</div>
 

@@ -30,6 +30,8 @@
 	      	$n_weight = $_POST['weight'];
 	      	$n_arrived = $_POST['arrived'];
 	      	$n_breed = $_POST['breed'];
+	      	$quantity = $_POST['quantity'];
+	      	$threshold = $_POST['threshold'];
 	      	$n_remark = $_POST['remark'];
 	      	$n_status = $_POST['status'];
 			$n_type = $_POST['type'];
@@ -59,7 +61,7 @@
 		}
       	
 
-      	$insert = $db->query("INSERT INTO livestock(livestockno, sale_amount, weight, arrived,breed_id,remark,health_status,type, img,gender, reorder) VALUES('$n_livestockno', '$sale_amount', '$n_weight', '$n_arrived', '$n_breed', '$n_remark', '$n_status','$n_type','$path1','$n_gender', '$reorder') ");
+      	$insert = $db->query("INSERT INTO livestock(livestockno, sale_amount, weight, arrived,breed_id, quantity, threshold, remark,health_status,type, img,gender) VALUES('$n_livestockno', '$sale_amount', '$n_weight', '$n_arrived', '$n_breed', '$quantity', '$threshold', '$n_remark', '$n_status','$n_type','$path1','$n_gender') ");
 
       	if($insert){?>
       	<div class="alert alert-success alert-dismissable">
@@ -145,7 +147,7 @@
 	 		<div class="row" style="margin-bottom: 4px;">
 	 			<div class="col-sm-6">
 	 				<label>Quantity</label>
-	 				<input type="number" min="1" name="quantity" id="quantity" class="form-control">
+	 				<input type="number" min="1" name="quantity" id="quantity" class="form-control" required>
 	 			</div>
 	 			<div class="col-sm-6">
 	 				<label>Threshold</label>
