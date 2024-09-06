@@ -59,7 +59,25 @@
                                         <td><?php echo $breed->name ?></td>
                                         <td><?php echo $data->weight ?></td>
                                         <td><?php echo $data->gender ?></td>
-                                        <td><?php echo $data->arrived ?></td>
+                                        <td>
+                                            <?php 
+                                                echo $data->arrived;
+                                                echo '<br>';
+
+                                                $vd = $data->vaccination_date;
+
+
+                                                $currentDate = date("2024-12-10");
+                                                $seven_days_before =  date("Y-m-d", strtotime($currentDate . ' - 7 days'));
+
+                                                if ($seven_days_before >= $vd) {
+                                                    echo 'vaccination date almost due';
+                                                }
+
+                                                $today = strtotime("today midnight");
+                                            ?>
+                                                    
+                                        </td>
                                         <td>
                                             <?php if ($data->quantity > 0) : ?>
                                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?php echo $data->lid ?>">

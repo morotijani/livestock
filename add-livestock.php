@@ -60,10 +60,8 @@
 			}
 		}
 
-		$vaccination_date = date("Y-m-d", strtotime("+3 month", $n_arrived));
-		echo $vaccination_date;
-		die;
-      	
+		$a_date = strtotime($n_arrived);
+		$vaccination_date = date("Y-m-d", strtotime("+3 month", $a_date));
 
       	$insert = $db->query("INSERT INTO livestock(livestockno, sale_amount, weight, arrived,breed_id, quantity, threshold, remark,health_status,type, img,gender, reorder, vaccination_date) VALUES('$n_livestockno', '$sale_amount', '$n_weight', '$n_arrived', '$n_breed', '$quantity', '$threshold', '$n_remark', '$n_status','$n_type','$path1','$n_gender', '$reorder', '$vaccination_date') ");
 
