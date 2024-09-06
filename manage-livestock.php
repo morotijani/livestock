@@ -6,32 +6,32 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
-  <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Livestock Management</b></h5>
-  </header>
- 
- <?php include 'inc/data.php'; ?>
+    <!-- Header -->
+    <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-dashboard"></i> Livestock Management</b></h5>
+    </header>
 
- 
- <div class="w3-container" style="padding-top:22px">
- <div class="w3-row">
- 	<h2>Manage Livestock</h2>
-  <a href="add-livestock.php" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Add New Livestock</a><br><br>
- <div class="table-responsive">
- 	<table class="table table-hover table-striped" id="table">
- 		<thead>
- 			<tr>
- 				<th>S/N</th>
-        <th>Photo</th>
- 				<th>Livestock No.</th>
-        <th>Type</th>
- 				<th>Breed</th>
- 				<th>Weight</th>
- 				<th>Gender</th>
- 				<th>Arrived</th>
-         <th></th>
- 				<th>Desc.</th>
+    <?php include 'inc/data.php'; ?>
+
+    <div class="w3-container" style="padding-top:22px">
+        <div class="w3-row">
+         	<h2>Manage Livestock</h2>
+            <a href="add-livestock.php" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Add New Livestock</a><br><br>
+            <div class="table-responsive">
+         	    <table class="table table-hover table-striped" id="table">
+         		    <thead>
+         			    <tr>
+         				    <th>S/N</th>
+                            <th>Photo</th>
+         				    <th>Livestock No.</th>
+                            <th>Type</th>
+         				    <th>Breed</th>
+         				    <th>Weight</th>
+         				    <th>Gender</th>
+ 				            <th>Arrived</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+ 				            <th>Desc.</th>
         <th></th>
  			</tr>
  		</thead>
