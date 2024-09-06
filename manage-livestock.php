@@ -44,8 +44,11 @@
                                 $breed_result = $get_breed->fetchAll(PDO::FETCH_OBJ);
                                 
                                 foreach($breed_result as $breed) {
+                                    
+                                    $vd = strtotime($data->vaccination_date);
+                                    $seven_days_before = strtotime(date("Y-m-d") . ' - 7 days');
                         ?>
-                                    <tr>
+                                    <tr style="background-color: <?= (($seven_days_before >= $vd) ? 'red' : ''); ?>">
                                         <td><?php echo $data->lid ?></td>
                                         <td>
                                             <img width="70" height="70" src="<?php echo $data->img; ?>" class="img img-responsive thumbnail">
