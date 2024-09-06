@@ -23,9 +23,7 @@
  				<th>livestock No.</th>
 				<th>Type</th>
  				<th>Weight</th>
- 				<th>Sale status</th>
                 <th>Sale Amount</th>
- 				<th>Arrived</th>
  				
  			</tr>
  		</thead>
@@ -41,7 +39,7 @@
                //calculating numbers/int values rows in sale amount column
                $total_sales= number_format(array_sum($sales_rows), 2);
 
-
+               $i = 1;
                foreach ($result as $j) {
                	 $livestockname = $j->livestockno;
 				 $ls_type = $j->type;
@@ -50,7 +48,6 @@
                	 $gender = $j->gender;
                	 $remark = $j->remark;
                  $sale_amount= $j->sale_amount;
-               	 $arr = $j->arrived;
 
 
                	 $k = $db->query("SELECT * FROM breed WHERE id = '$b_id' ");
@@ -60,9 +57,7 @@
                	 ?>
                   <tr>
                   	<td>
-                  		<?php for ($i=1; $i <= $c ; $i++) { 
-                  			echo $i;
-                  		} ?>
+                  		<?php echo $i; ?>
 
                   	</td>
                   	<td><?php echo $livestockname; ?></td>
@@ -71,12 +66,11 @@
                     <td>
 						<?php echo "GH₵". number_format($sale_amount, 2); ?>
 					</td>
-                  	<td><?php echo $arr; ?></td>
                   	
                   </tr>
                  
                	 <?php
-                 }
+                 $i++; }
               }
  			?>
  		</tbody>
