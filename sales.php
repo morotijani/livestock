@@ -16,7 +16,7 @@
  <div class="w3-row">
  	<h2>Sales</h2>
  <div class="table-responsive">
- 	<table class="table table-hover" id="table">
+ 	<table class="table table-hover bg-success" id="table">
  		<thead>
  			<tr>
  				<th>S/N</th>
@@ -37,7 +37,15 @@
                $sales = "SELECT amount FROM sales";
                $sales_rows=$db->query($sales)->fetchAll(PDO::FETCH_COLUMN);
                //calculating numbers/int values rows in sale amount column
-               $total_sales= number_format(array_sum($sales_rows), 2);
+               $total_sales= array_sum($sales_rows);
+
+                $reorder_sales = "SELECT new_amount FROM reorder";
+               $reorder_sales_rows=$db->query($reorder_sales)->fetchAll(PDO::FETCH_COLUMN);
+               //calculating numbers/int values rows in sale amount column
+               $reorder_total_sales = number_format(array_sum($reorder_sales_rows), 2);
+
+               $total_sales = $total_sales + array_sum($reorder_sales_rows);
+               $total_sales = number_format($total_sales, 2);
 
                $i = 1;
                foreach ($result as $j) {
@@ -65,6 +73,8 @@
                   	<td><?php echo $weight; ?></td>           
                     <td>
 						<?php echo "GH₵". number_format($sale_amount, 2); ?>
+                        <br>
+                        <?= (($j->reorder == 1) ? '<span class="badge badge-warning">Re-order</span>' : ''); ?>
 					</td>
                   	
                   </tr>
@@ -85,6 +95,9 @@
                 <th></th>
  				<th></th>		
  			</tr>
+            <tr>
+                <td style="background-color: orange; height: 50px; padding: 10px; border-radius: 5px;">Discount Total Sales: GH₵<?= $reorder_total_sales;?> </td>
+            </tr>
 			<tr>
 				<td style="background-color: grey; height: 50px; padding: 10px; border-radius: 5px;">Total Sales: GH₵<?= $total_sales;?> </td>
 			</tr>

@@ -59,9 +59,13 @@
 				}
 			}
 		}
+
+		$vaccination_date = date("Y-m-d", strtotime("+3 month", $n_arrived));
+		echo $vaccination_date;
+		die;
       	
 
-      	$insert = $db->query("INSERT INTO livestock(livestockno, sale_amount, weight, arrived,breed_id, quantity, threshold, remark,health_status,type, img,gender) VALUES('$n_livestockno', '$sale_amount', '$n_weight', '$n_arrived', '$n_breed', '$quantity', '$threshold', '$n_remark', '$n_status','$n_type','$path1','$n_gender') ");
+      	$insert = $db->query("INSERT INTO livestock(livestockno, sale_amount, weight, arrived,breed_id, quantity, threshold, remark,health_status,type, img,gender, reorder, vaccination_date) VALUES('$n_livestockno', '$sale_amount', '$n_weight', '$n_arrived', '$n_breed', '$quantity', '$threshold', '$n_remark', '$n_status','$n_type','$path1','$n_gender', '$reorder', '$vaccination_date') ");
 
       	if($insert){?>
       	<div class="alert alert-success alert-dismissable">
@@ -170,7 +174,11 @@
 	 			<input type="file" name="livestockphoto" class="form-control" required>
 	 		</div>
 
-	
+			<div class="form-group">
+				<label for="">Re-order</label>&nbsp;
+				<input type="checkbox" name="reorder" value="1" class="">
+			</div>
+
 
 	 		<button name="submit" type="submit" name="submit" class="btn btn-sn btn-default">Add Record</button>
  		</form>

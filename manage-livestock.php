@@ -52,6 +52,8 @@
                                         </td>
                                         <td>
                                             <?php echo $data->livestockno; ?>
+                                            <br>
+                                            <?= (($data->reorder == 1) ? '<span class="badge badge-warning">Re-order</span>' : ''); ?>
                                         </td>
                                         <td><?php echo $data->type ?></td>
                                         <td><?php echo $breed->name ?></td>
