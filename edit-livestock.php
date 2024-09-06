@@ -26,6 +26,8 @@
 	   $sale_status=$obj->sale_status;
 	   $sale_amount=$obj->sale_amount;
 	   $b_id = $obj->breed_id;
+	   $quantity = $obj->quantity;
+	   $threshold = $obj->threshold;
 	   $health = $obj->health_status;
 	   $img = $obj->img;
 
@@ -61,6 +63,8 @@
       	$n_weight = $_POST['weight'];
       	$n_arrived = $_POST['arrived'];
       	$n_breed = $_POST['breed'];
+      	$quantity = $_POST['quantity'];
+      	$threshold = $_POST['threshold'];
       	$n_remark = $_POST['remark'];
       	$n_status = $_POST['status'];
 		$n_type = $_POST['type'];
@@ -69,7 +73,7 @@
 
       	$n_id = $_GET['id'];
 
-      	$update_query = $db->query("UPDATE livestock SET livestockno = '$livestockno ',weight = '$n_weight',arrived = '$n_arrived', breed_id = '$n_breed', remark = '$n_remark',health_status = '$n_status', type='$n_type', sale_status='$n_sale_status',sale_amount='$n_sale_amount' WHERE id = '$n_id' ");
+      	$update_query = $db->query("UPDATE livestock SET livestockno = '$livestockno ',weight = '$n_weight',arrived = '$n_arrived', breed_id = '$n_breed', quantity = '$quantity', quantity = '$quantity', remark = '$n_remark',health_status = '$n_status', type='$n_type', sale_status='$n_sale_status',sale_amount='$n_sale_amount' WHERE id = '$n_id' ");
 
       	if($update_query){?>
       	<div class="alert alert-success alert-dismissable">
@@ -147,6 +151,17 @@
 	                   }
 	 				?>
 	 			</select>
+	 		</div>
+
+	 		<div class="row" style="margin-bottom: 4px;">
+	 			<div class="col-sm-6">
+	 				<label>Quantity</label>
+	 				<input type="number" min="1" name="quantity" id="quantity" class="form-control" value="<?= $quantity ?>" required>
+	 			</div>
+	 			<div class="col-sm-6">
+	 				<label>Threshold</label>
+	 				<input type="number" min="1" name="threshold" id="threshold" value="<?= $threshold ?>" class="form-control">
+	 			</div>
 	 		</div>
 
 	 		<div class="form-group">
