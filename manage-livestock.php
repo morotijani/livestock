@@ -64,17 +64,13 @@
                                                 echo $data->arrived;
                                                 echo '<br>';
 
-                                                $vd = $data->vaccination_date;
-
-
-                                                $currentDate = date("2024-12-10");
-                                                $seven_days_before =  date("Y-m-d", strtotime($currentDate . ' - 7 days'));
+                                                $vd = strtotime($data->vaccination_date);
+                                                $seven_days_before = strtotime(date("Y-m-d") . ' - 7 days');
 
                                                 if ($seven_days_before >= $vd) {
-                                                    echo 'vaccination date almost due';
+                                                    echo '7 days to vaccination date is almost due';
                                                 }
 
-                                                $today = strtotime("today midnight");
                                             ?>
                                                     
                                         </td>
