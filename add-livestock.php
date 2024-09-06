@@ -142,6 +142,17 @@
 	 			</select>
 	 		</div>
 
+	 		<div class="row" style="margin-bottom: 4px;">
+	 			<div class="col-sm-6">
+	 				<label>Quantity</label>
+	 				<input type="number" min="1" name="quantity" id="quantity" class="form-control">
+	 			</div>
+	 			<div class="col-sm-6">
+	 				<label>Threshold</label>
+	 				<input type="number" min="1" name="threshold" id="threshold" class="form-control">
+	 			</div>
+	 		</div>
+
 	 		<div class="form-group">
 	 			<label class="control-label">Description</label>
 	 			<textarea class="form-control" name="remark" required></textarea>
@@ -157,10 +168,7 @@
 	 			<input type="file" name="livestockphoto" class="form-control" required>
 	 		</div>
 
-			 <div class="form-group">
-				<label for="">Re-order</label>&nbsp;
-				<input type="checkbox" name="reorder" value="1" class="">
-			 </div>
+	
 
 	 		<button name="submit" type="submit" name="submit" class="btn btn-sn btn-default">Add Record</button>
  		</form>
